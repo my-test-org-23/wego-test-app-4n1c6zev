@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-jmsl56
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-jmsl56
+  namespace: my-nginx-jmsl56
+  labels:
+    name: nginx-jmsl56
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-jmsl56
+  template:
+    metadata:
+      namespace: my-nginx-jmsl56
+      labels:
+        name: nginx-jmsl56
+    spec:
+      containers:
+      - name: nginx-jmsl56
+        image: nginx
+        ports:
+        - containerPort: 80
+
